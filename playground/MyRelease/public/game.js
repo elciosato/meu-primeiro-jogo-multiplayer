@@ -3,8 +3,8 @@ export default function createGame() {
         players: {},
         fruits: {},
         screen: {
-            width: 10,
-            height: 10
+            width: 20,
+            height: 20
         }
     }
 
@@ -121,9 +121,9 @@ export default function createGame() {
         const player = state.players[playerId]
         for (const fruitId in state.fruits) {
             const fruit = state.fruits[fruitId]
-            console.log(`Checking [${playerId}] (${player.x},${player.y}) and [${fruitId}] (${fruit.x},${fruit.y})`)
+            // console.log(`Checking [${playerId}] (${player.x},${player.y}) and [${fruitId}] (${fruit.x},${fruit.y})`)
             if (fruit.x == player.x && fruit.y == player.y) {
-                console.log('COLLISION')
+                console.log(`> Collision [${playerId}] - (${player.x},${player.y})`)
                 removeFruit({fruitId})
             }
         }

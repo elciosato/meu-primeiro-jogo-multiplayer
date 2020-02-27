@@ -26,6 +26,11 @@
 
             const socket = io()
 
+            function resizeCanvas(width, height) {
+                document.getElementById('screen').width = width;
+                document.getElementById('screen').height = height;
+            }
+
             socket.on('connect', () => {
                 const playerId = socket.id
                 console.log(`Player connect on Client with id: ${playerId}`)
@@ -38,6 +43,7 @@
                 const playerId = socket.id
                 console.log(`> Receiving [init] state from server`)
                 game.setState(state)
+                resizeCanvas(state.screen.width, state.screen.height)
                 keyboardListener.registerPlayerId(playerId)
                 keyboardListener.subscribe(game.movePlayer)
                 keyboardListener.subscribe((command) => {
